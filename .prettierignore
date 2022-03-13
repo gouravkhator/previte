@@ -2,6 +2,8 @@
 # .prettierignore has similar config as .gitignore
 # Build and Tooling files
 build/
+dev-dist/
+dist/
 node_modules/
 .gitignore
 .env

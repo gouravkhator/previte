@@ -2,8 +2,7 @@
 
 Playing around with Preact and Vite.
 
-> **NOTE: Currently, we need to make the whole thing work in development mode**
-My approach is to make the ViteJS do the development caching in `build` folder.
+> This `vite-plugin-pwa` branch uses `vite-plugin-pwa` for the PWA functionality, but still there are some issues for PWA in the development mode.
 
 ## Checklist
 
@@ -26,8 +25,6 @@ My approach is to make the ViteJS do the development caching in `build` folder.
 
 - `check-format`: Checks the formatting, as per the prettier config `.prettierrc` file. 
 - `format`: Formats the files in-place, as per the prettier config `.prettierrc` file.
-- `sw`: Runs the generate service worker script of the `workbox-cli`, following the `workbox.config.js` config file.
 - `dev:start`: Runs the vitejs development server.
-- `dev`: Runs the `dev:start` and `sw` concurrently, to have both the development servers running, with clear concurrent logs.
-- `prod:build`: Deletes the `build/` folder, then runs the `vite build` script with production as the node environment. It then runs the `sw` npm script.
+- `prod:build`: Deletes the `build/` folder, then formats the files, and finally runs the `vite build` script with production as the node environment.
 - `prod:build:serve`: Runs the `prod:build` npm script, and then serves the generated `build/` folder.

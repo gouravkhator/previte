@@ -5,10 +5,8 @@
   "scripts": {
     "check-format": "prettier --config .prettierrc -c .",
     "format": "prettier --config .prettierrc -w .",
-    "sw": "workbox generateSW workbox.config.js",
     "dev:start": "vite",
-    "dev": "concurrently 'npm:dev:start' 'npm:sw'",
-    "prod:build": "del-cli build && npm run format && NODE_ENV=production vite build && npm run sw",
+    "prod:build": "rimraf build && npm run format && NODE_ENV=production vite build",
     "prod:build:serve": "npm run prod:build && vite preview"
   },
   "dependencies": {
@@ -17,11 +15,10 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.1.5",
     "concurrently": "^7.0.0",
-    "del-cli": "^4.0.1",
     "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.49.9",
     "vite": "^2.8.0",
-    "workbox-build": "^6.5.1",
-    "workbox-cli": "^6.5.1"
+    "vite-plugin-pwa": "^0.11.13"
   }
 }
