@@ -1,13 +1,17 @@
 import { render } from "preact";
 import { App } from "./pages/App";
 import "./styles/main.scss";
-import manifestDataUri from "./pwa_manifest";
+import manifestDataUri from "../manifest.pwa";
 
 // the below <App /> JSX syntax requires the filename to be ended with .jsx so that esbuild can work smoothly, without us controlling the build..
 render(<App />, document.getElementById("app"));
 
 function registerSW() {
-  if ("serviceWorker" in navigator) {
+  if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+    /*
+    we are registering the workbox generated service worker, only in production,
+    as the development build is having some issues for service workers..
+    */
     navigator.serviceWorker
       .register("./sw.js")
       .then(() => {

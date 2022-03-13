@@ -1,8 +1,19 @@
-import favicon from "./assets/favicon.svg";
-import smallerViteIcon from "./assets/vite-icon-192x192.png";
-import largerViteIcon from "./assets/vite-icon-512x512.png";
+// we can import below icons as /icon_file_name as we registered the publicDir option in Vite
+import favicon from "./src/assets/favicon.svg";
+import smallerViteIcon from "./src/assets/android-chrome-192x192.png";
+import largerViteIcon from "./src/assets/android-chrome-512x512.png";
 
 const baseUrl = window.location.origin; // the origin -- protocol + hostname + port
+
+/**
+ * Returns full url for the assets
+ *
+ * Full URL is calculated as: origin + asset_url_provided
+ * @param asset_url Always should be prefixed with '/'
+ */
+function getURL(asset_url) {
+  return baseUrl + asset_url;
+}
 
 /**
  * The manifest JS Object -- It will be converted to Data URI as a better replacement
@@ -10,27 +21,33 @@ const baseUrl = window.location.origin; // the origin -- protocol + hostname + p
  * This way, we can build manifest dynamically,
  * as we know that the src/href for icons will change by the ViteJS build tooling..
  */
-const manifest = {
+export const manifest = {
   short_name: "Previte",
   name: "Previte: Get Set with Vite-al Preact!",
   icons: [
     {
-      src: baseUrl + favicon,
+      src: getURL(favicon),
       type: "image/svg+xml",
       sizes: "512x512",
     },
     {
-      src: baseUrl + smallerViteIcon,
-      type: "image/png",
+      src: getURL(smallerViteIcon),
       sizes: "192x192",
+      type: "image/png",
     },
     {
-      src: baseUrl + largerViteIcon,
-      type: "image/png",
+      src: getURL(largerViteIcon),
       sizes: "512x512",
+      type: "image/png",
+    },
+    {
+      src: getURL(largerViteIcon),
+      sizes: "512x512",
+      type: "image/png",
+      purpose: "any maskable",
     },
   ],
-  start_url: baseUrl + "/index.html",
+  start_url: getURL("/index.html"),
   background_color: "#3367D6",
   display: "standalone",
   scope: baseUrl,

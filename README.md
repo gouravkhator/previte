@@ -2,8 +2,14 @@
 
 Playing around with Preact and Vite.
 
-> **NOTE: Currently, we need to make the whole thing work in development mode**
-My approach is to make the ViteJS do the development caching in `build` folder.
+## Current Problems for PWA functionality
+
+- Development mode registration of service worker, is hard to be implemented with `workbox` or `vite-plugin-pwa`, as I researched a lot through the options and official docs.
+- Precaching of important files, even in production mode is not working now. 
+
+**Final Resolution for above problems**
+
+Make a normal **service worker from scratch**, instead of `workbox` or `vite-plugin-pwa`, as that will provide full control and customization.
 
 ## Checklist
 
