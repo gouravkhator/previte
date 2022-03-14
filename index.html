@@ -6,19 +6,23 @@
       name="description"
       content="Previte - The Perfect Flexi-Template for PWA for every level of JS Geek.."
     />
-    <link rel="icon" href="./src/assets/favicon.svg" type="image/svg+xml" />
+    <!-- 
+      If there is some file that is not set in the public route by the vite,
+    and is used in href or url in the html, then that file will also add up in the build/assets folder, after the build..
+    
+    So, instead of public route '/favicon.svg', if I write "./src/assets/favicon.svg", 
+    then it adds the file in build/assets folder, 
+    irrespective of whether the public route '/favicon.svg' has added the favicon.svg in the build folder.
+    -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
       rel="alternate icon"
-      href="./src/assets/favicon.ico"
+      href="/favicon.ico"
       type="image/png"
       sizes="16x16"
     />
-    <link
-      rel="apple-touch-icon"
-      href="./src/assets/apple-touch-icon.png"
-      sizes="180x180"
-    />
-    <link rel="mask-icon" href="./src/assets/favicon.svg" color="#3367D6" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="mask-icon" href="/favicon.svg" color="#3367D6" />
     <meta name="theme-color" content="#3367D6" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
@@ -33,6 +37,6 @@
     </noscript>
 
     <div id="app"></div>
-    <script type="module" src="/src/index.jsx"></script>
+    <script type="module" src="./src/index.jsx"></script>
   </body>
 </html>
