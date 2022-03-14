@@ -16,6 +16,26 @@ function registerManifest() {
 
 if ("serviceWorker" in navigator) {
   registerSW(); // default vite-plugin-pwa modules' code to register the service worker
+
+  // below is the commented code to show the update button when the new update comes
+  // this will activate the latest service worker.
+
+  /*
+   const updateSW = registerSW({
+    onNeedRefresh() {
+      Toastify({
+        text: `<h4 style='display: inline'>An update is available!</h4>
+               <br><br>
+               <a class='do-sw-update'>Click to update and reload</a>  `,
+        escapeMarkup: false,
+        gravity: "bottom",
+        onClick() {
+          updateSW(true);
+        }
+      }).showToast();
+    }
+  });
+  */
 }
 
 // registerManifest(); // my custom manifest, which is not used, as vite-plugin-pwa spits its own manifest..

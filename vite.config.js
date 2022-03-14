@@ -16,12 +16,17 @@ export default defineConfig({
   publicDir: "src/assets", // add all the files in this mentioned directory, to `build/` folder..
   build: {
     outDir: "build",
-    manifest: false,
   },
   plugins: [
     preact(),
     VitePWA({
       manifest: {
+        short_name: "Previte",
+        name: "Previte: Get Set with Vite-al Preact!",
+        background_color: "#3367D6",
+        display: "standalone",
+        theme_color: "#3367D6",
+        description: "Template for building PWA with Preact and ViteJS",
         icons: [
           {
             src: urls.favicon,
@@ -47,6 +52,12 @@ export default defineConfig({
         ],
       },
       workbox: {
+        /*
+        this skipWaiting option is turned off, because we need to show update button to user once the service worker is activated..
+        Updated Service worker does not get activated on page reload, but only gets activated on tab close and then reopen..
+        */
+
+        // skipWaiting: true,
         runtimeCaching: [
           getRuntimeCacheConfig({
             // any image in the '*/images' route, will be saved to cache name 'images'
@@ -59,68 +70,3 @@ export default defineConfig({
     }),
   ],
 });
-
-// Some options we explored before..
-
-/*
-const mode =
-  process.env.NODE_ENV === "production" ? "production" : "development";
-const swURL =
-  process.env.NODE_ENV === "production"
-    ? path.join(__dirname, "build", "sw.js")
-    : path.join(__dirname, "sw.js");
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  publicDir: "src/assets", // to allow direct route for all assets like /favicon.svg as is..
-  plugins: [
-    preact(),
-    VitePWA({
-      // using this approach, to let the plugin generate manifest for us..
-      manifest: {
-        icons: [
-          {
-            src: "/favicon.svg",
-            type: "image/svg+xml",
-            sizes: "512x512",
-          },
-          {
-            src: "/android-chrome-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/android-chrome-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-          {
-            src: "/android-chrome-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-            purpose: "any maskable",
-          },
-        ],
-      },
-      includeAssets: ["robots.txt"],
-      strategies: "generateSW",
-      registerType: mode === "production" ? "prompt" : "autoUpdate",
-      devOptions: {
-        enabled: mode !== "production",
-      },
-      mode: mode,
-      base: "/",
-      srcDir: "src",
-      filename: "sw.js",
-      workbox: {
-        swDest: swURL,
-        clientsClaim: true,
-        skipWaiting: true,
-      },
-    }),
-  ],
-  build: {
-    outDir: "build",
-  },
-});
-*/

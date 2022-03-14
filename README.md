@@ -1,15 +1,21 @@
-# Previte -- Preact + Vite
+# Previte - Preact + Vite
 
 Playing around with Preact and Vite.
 
-> This `vite-plugin-pwa` branch uses `vite-plugin-pwa` for the PWA functionality, but still there are some issues for PWA in the development mode.
+> This `vite-plugin-pwa` git branch uses `vite-plugin-pwa` npm package for the **PWA** functionality.
+
+## Current Issues with this branch
+
+- [ ] Service workers does not work in development mode.
 
 ## Checklist
 
 - [x] Sass Support
 - [x] Prettier config
-- [ ] Husky + Lint-staged for linting before committing changes to the remote repo.
 - [x] Service workers and PWA support
+- [x] Precaching and Runtime Caching for PWA
+- [ ] Show update button to the user, to let them update the PWA's content
+- [ ] Husky + Lint-staged for linting before committing changes to the remote repo.
 - [ ] [Legacy browser support](https://vitejs.dev/guide/build.html)
 - [ ] Environment variables and files
 - [ ] Github CI/CD
