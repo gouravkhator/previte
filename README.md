@@ -28,3 +28,9 @@ Playing around with Preact and Vite.
 - `dev:start`: Runs the vitejs development server.
 - `prod:build`: Deletes the `build/` folder, then formats the files, and finally runs the `vite build` script with production as the node environment.
 - `prod:build:serve`: Runs the `prod:build` npm script, and then serves the generated `build/` folder.
+
+## Credits
+
+Thanks [CSS Tricks | VitePluginPWA Service Worker](https://css-tricks.com/vitepwa-plugin-offline-service-worker/) for a great detailed article. 
+
+It helped in integrating the PWA, after so much researching for good docs, for the available options in that Plugin..

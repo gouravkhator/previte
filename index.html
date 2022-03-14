@@ -7,7 +7,12 @@
       content="Previte - The Perfect Flexi-Template for PWA for every level of JS Geek.."
     />
     <!-- 
-      The icons are already served from the root as mentioned in Vite Config, so, we can go ahead with '/asset-file-name'
+      If there is some file that is not set in the public route by the vite,
+    and is used in href or url in the html, then that file will also add up in the build/assets folder, after the build..
+
+    So, instead of public route '/favicon.svg', if I write "./src/assets/favicon.svg", 
+    then it adds the file in build/assets folder, 
+    irrespective of whether the public route '/favicon.svg' has added the favicon.svg in the build folder.
     -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
@@ -32,6 +37,6 @@
     </noscript>
 
     <div id="app"></div>
-    <script type="module" src="/src/index.jsx"></script>
+    <script type="module" src="./src/index.jsx"></script>
   </body>
 </html>

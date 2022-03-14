@@ -1,11 +1,68 @@
 import { defineConfig } from "vite";
 import preact from "@preact/preset-vite";
 import { VitePWA } from "vite-plugin-pwa";
-import path from "path";
-import rimraf from "rimraf";
+import { getRuntimeCacheConfig } from "./utils.pwa";
 
-rimraf.sync(path.join(__dirname, "dev-dist"));
+/**
+ * URLs for the icons and other stuffs..
+ */
+const urls = {
+  favicon: "/favicon.svg",
+  smallerIcon: "/android-chrome-192x192.png",
+  largerIcon: "/android-chrome-512x512.png",
+};
 
+export default defineConfig({
+  publicDir: "src/assets", // add all the files in this mentioned directory, to `build/` folder..
+  build: {
+    outDir: "build",
+    manifest: false,
+  },
+  plugins: [
+    preact(),
+    VitePWA({
+      manifest: {
+        icons: [
+          {
+            src: urls.favicon,
+            type: "image/svg+xml",
+            sizes: "512x512",
+          },
+          {
+            src: urls.smallerIcon,
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: urls.largerIcon,
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: urls.largerIcon,
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
+      },
+      workbox: {
+        runtimeCaching: [
+          getRuntimeCacheConfig({
+            // any image in the '*/images' route, will be saved to cache name 'images'
+            // it does not include any image in '/assets' folder, as the pattern does not match
+            pattern: /\/images\/.*\.(gif|jpe?g|tiff?|png|webp|bmp|svg)$/i,
+            name: "images",
+          }),
+        ],
+      },
+    }),
+  ],
+});
+
+// Some options we explored before..
+
+/*
 const mode =
   process.env.NODE_ENV === "production" ? "production" : "development";
 const swURL =
@@ -65,29 +122,5 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
-});
-
-// OLD vite config -- playing around
-
-/*
-export default defineConfig(({ command, mode }) => {
-  const baseConfig = {
-    plugins: [preact()],
-    build: {
-      outDir: "build",
-    },
-  };
-
-  if (command === "serve") {
-    // development mode
-    return {
-      ...baseConfig,
-    };
-  } else {
-    // production mode
-    return {
-      ...baseConfig,
-    };
-  }
 });
 */
