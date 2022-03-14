@@ -1,7 +1,7 @@
 // we can import below icons as /icon_file_name as we registered the publicDir option in Vite
-import favicon from "./src/assets/favicon.svg";
-import smallerViteIcon from "./src/assets/android-chrome-192x192.png";
-import largerViteIcon from "./src/assets/android-chrome-512x512.png";
+import favicon from "/favicon.svg";
+import smallerViteIcon from "/android-chrome-192x192.png";
+import largerViteIcon from "/android-chrome-512x512.png";
 
 const baseUrl = window.location.origin; // the origin -- protocol + hostname + port
 

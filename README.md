@@ -2,21 +2,22 @@
 
 Playing around with Preact and Vite.
 
-## Current Problems for PWA functionality
+> This is the `main` git branch, for custom service worker code from scratch, without using `workbox` or `vite-plugin-pwa`..
 
-- Development mode registration of service worker, is hard to be implemented with `workbox` or `vite-plugin-pwa`, as I researched a lot through the options and official docs.
-- Precaching of important files, even in production mode is not working now. 
+**Note: Code using `workbox` is in the git branch `using-workbox`, and the code using `vite-plugin-pwa` is in the git branch `vite-plugin-pwa`**
 
-**Final Resolution for above problems**
+Also note that there are some issues in both of the mentioned branches, making it hard for me to set up Service worker in the development mode.
 
-Make a normal **service worker from scratch**, instead of `workbox` or `vite-plugin-pwa`, as that will provide full control and customization.
+That is why, I am making the service worker from scratch, with full control on it.
 
 ## Checklist
 
 - [x] Sass Support
 - [x] Prettier config
 - [ ] Husky + Lint-staged for linting before committing changes to the remote repo.
-- [x] Service workers and PWA support
+- [ ] Service workers and PWA support
+- [ ] Precaching and Runtime Caching in the service worker, with offline support.
+- [ ] Make PWA possible in dev mode too.
 - [ ] [Legacy browser support](https://vitejs.dev/guide/build.html)
 - [ ] Environment variables and files
 - [ ] Github CI/CD

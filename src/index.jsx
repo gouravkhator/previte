@@ -7,11 +7,7 @@ import manifestDataUri from "../manifest.pwa";
 render(<App />, document.getElementById("app"));
 
 function registerSW() {
-  if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
-    /*
-    we are registering the workbox generated service worker, only in production,
-    as the development build is having some issues for service workers..
-    */
+  if ("serviceWorker" in navigator) {
     navigator.serviceWorker
       .register("./sw.js")
       .then(() => {

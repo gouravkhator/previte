@@ -5,7 +5,7 @@
   "scripts": {
     "check-format": "prettier --config .prettierrc -c .",
     "format": "prettier --config .prettierrc -w .",
-    "sw": "workbox generateSW workbox.config.js",
+    "sw": "echo 'Service worker registration'",
     "dev:start": "vite",
     "dev": "concurrently 'npm:dev:start' 'npm:sw'",
     "prod:build": "del-cli build && npm run format && NODE_ENV=production vite build && npm run sw",
@@ -20,8 +20,6 @@
     "del-cli": "^4.0.1",
     "prettier": "^2.5.1",
     "sass": "^1.49.9",
-    "vite": "^2.8.0",
-    "workbox-build": "^6.5.1",
-    "workbox-cli": "^6.5.1"
+    "vite": "^2.8.0"
   }
 }
