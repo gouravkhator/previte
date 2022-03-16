@@ -28,5 +28,5 @@ function registerManifest() {
   document.querySelector("head").appendChild(element);
 }
 
-registerSW();
+// registerSW(); // commenting out the service worker code thing for now
 registerManifest();

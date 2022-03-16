@@ -12,6 +12,8 @@ That is why, I am making the service worker from scratch, with full control on i
 
 ## Checklist
 
+- [x] Env Loading with rollup replacing `process.env.<SOME_KEY>`
+    This task is completed, but with the env values exposed in build bundles, which is bad for security. Refer [this article](https://medium.com/swlh/keeping-env-variables-private-in-react-app-fa44a9b33c31) for more details on how the env values are exposed in the build bundles by any replace mechanism.
 - [x] Sass Support
 - [x] Prettier config
 - [ ] Husky + Lint-staged for linting before committing changes to the remote repo.
@@ -38,3 +40,11 @@ That is why, I am making the service worker from scratch, with full control on i
 - `dev`: Runs the `dev:start` and `sw` concurrently, to have both the development servers running, with clear concurrent logs.
 - `prod:build`: Deletes the `build/` folder, then runs the `vite build` script with production as the node environment. It then runs the `sw` npm script.
 - `prod:build:serve`: Runs the `prod:build` npm script, and then serves the generated `build/` folder.
+
+## Short Notes for Vite with Preact and PWA enabled
+
+- When loading env variables in ViteJS, refer [this](https://vitejs.dev/guide/env-and-mode.html) docs. Also, if I change something in `.env` files, then I have to restart the Vite server for the environment variables to be loaded smoothly.
+
+## Security Points
+
+- 
